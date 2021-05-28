@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dnd_main"
+    tools:context=".AddSpellActivity">
+
+    <TextView
+        android:id="@+id/currentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/addingSpell"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentName">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/lvl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:hint="@string/lvl"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/components"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lvl"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/components"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/components"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/source"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/name_spell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/source"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/name_spell"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/description_spell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_spell"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/description_spell"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description_spell"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/school"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/time_spell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/school"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/time_spell"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/type_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time_spell"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/type_duration"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/type_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/type_duration"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/type_distance"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/classes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/type_distance"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:hint="@string/classes"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/acceptSpell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/classes"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/addSpells" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

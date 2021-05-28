@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">DnDProject</string>
+    <string name="MainMenu">Главное меню</string>
+
+    <string name="Bestiary">Бестиарий</string>
+    <string name="Spells">Заклинания</string>
+    <string name="Items">Предметы</string>
+    <string name="Riches">Сокровища</string>
+
+    <string name="addRiches">Добавить сокровище</string>
+    <string name="addItems">Добавить предмет</string>
+    <string name="addSpells">Добавить заклинание</string>
+    <string name="addBestiary">Добавить существо</string>
+
+    <string name="addingSpell">Добавление заклинания</string>
+    <string name="addingRiches">Добавление сокровища</string>
+    <string name="addingItems">Добавление предмета</string>
+    <string name="addingBestiary">Добавление существа</string>
+
+    <string name="currentRiches">Сокровище</string>
+    <string name="currentItem">Предмет</string>
+    <string name="currentSpell">Заклинание</string>
+    <string name="currentBestiary">Существо</string>
+
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+
+    <string name="trinkets">Безделушки</string>
+    <string name="precious_stones">Драгоценные камни</string>
+    <string name="coins">Монеты</string>
+    <string name="artworks">Произведения искусства</string>
+
+    <string name="lvl">Уровень</string>
+    <string name="components">Компоненты</string>
+    <string name="source">Источник</string>
+    <string name="name_spell">Название заклинания</string>
+    <string name="description_spell">Описание заклинания</string>
+    <string name="school">Школа</string>
+    <string name="time_spell">Длительность</string>
+    <string name="type_duration">Время накладывания</string>
+    <string name="type_distance">Дистанция</string>
+    <string name="classes">Классы</string>
+
+    <string name="createRiches">Создание сокровища</string>
+    <string name="title">Название(Необязательно)</string>
+    <string name="chooseTrinkets">Выбрать существующую безделушку:</string>
+    <string name="chooseArtworks">Выбрать существующее произведение искусства:</string>
+    <string name="chooseCoins">Выбрать существующие монеты:</string>
+    <string name="choosePrecious_stones">Выбрать существующие драгоценные камни:</string>
+    <string name="add">Добавить</string>
+    <string name="addNewTrinkets">Создать и добавить новую безделушку</string>
+    <string name="addNewArtworks">Создать и добавить новое произведение искусства</string>
+    <string name="addNewCoins">Создать и добавить новые монеты</string>
+    <string name="addNewPrecious_stones">Создать и добавить новые драгоценные камни</string>
+    <string name="yourRiches">Ваше сокровище:</string>
+    <string name="createNewRiches">Создать сокровище</string>
+</resources>

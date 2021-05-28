@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dnd_main"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/MainMenu"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttBestiary"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tvMainMenu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="@string/Bestiary" />
+
+    <Button
+        android:id="@+id/buttSpells"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/buttBestiary"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:text="@string/Spells" />
+
+    <Button
+        android:id="@+id/buttItems"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/buttSpells"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:text="@string/Items" />
+
+    <Button
+        android:id="@+id/buttRiches"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/buttItems"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:text="@string/Riches" />
+
+</RelativeLayout>
