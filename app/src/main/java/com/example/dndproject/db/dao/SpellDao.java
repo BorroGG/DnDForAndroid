@@ -6,7 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.dndproject.db.entities.Source;
 import com.example.dndproject.db.entities.Spell;
 
 import java.util.List;

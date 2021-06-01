@@ -144,7 +144,7 @@ public class CurrentRichesActivity extends AppCompatActivity {
                 layoutArtworksForData.addView(view, getLayoutParams());
             }
         } else {
-            tvCoins.setVisibility(View.GONE);
+            tvArtworks.setVisibility(View.GONE);
         }
 
     }
