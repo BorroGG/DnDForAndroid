@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DnDProject">
-        <activity android:name=".AddSpellActivity"></activity>
+        <activity android:name=".CurrentEntityActivity"></activity>
+        <activity android:name=".CurrentItemActivity" />
+        <activity android:name=".AddSpellActivity" />
         <activity android:name=".CurrentSpellActivity" />
         <activity android:name=".AddRichesActivity" />
         <activity android:name=".CurrentRichesActivity" />

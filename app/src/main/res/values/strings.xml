@@ -6,6 +6,7 @@
     <string name="Spells">Заклинания</string>
     <string name="Items">Предметы</string>
     <string name="Riches">Сокровища</string>
+    <string name="Info">Информация</string>
 
     <string name="addRiches">Добавить сокровище</string>
     <string name="addItems">Добавить предмет</string>
@@ -29,6 +30,8 @@
     <string name="precious_stones">Драгоценные камни</string>
     <string name="coins">Монеты</string>
     <string name="artworks">Произведения искусства</string>
+
+    <string name="weapons">Оружие</string>
 
     <string name="lvl">Уровень</string>
     <string name="components">Компоненты</string>

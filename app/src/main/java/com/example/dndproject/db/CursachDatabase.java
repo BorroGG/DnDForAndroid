@@ -9,6 +9,8 @@ import androidx.room.Transaction;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.dndproject.db.dao.*;
+import com.example.dndproject.db.dao.items.ItemsDao;
+import com.example.dndproject.db.dao.items.WeaponItemsMMDao;
 import com.example.dndproject.db.dao.riches.ArtworksDao;
 import com.example.dndproject.db.dao.riches.ArtworksRichesMMDao;
 import com.example.dndproject.db.dao.riches.CoinsDao;
@@ -19,6 +21,30 @@ import com.example.dndproject.db.dao.riches.RichesDao;
 import com.example.dndproject.db.dao.riches.TrinketsDao;
 import com.example.dndproject.db.dao.riches.TrinketsRichesMMDao;
 import com.example.dndproject.db.entities.*;
+import com.example.dndproject.db.entities.items.Additions;
+import com.example.dndproject.db.entities.items.Ammunition;
+import com.example.dndproject.db.entities.items.AmmunitionItemsMM;
+import com.example.dndproject.db.entities.items.Armor;
+import com.example.dndproject.db.entities.items.Armor1;
+import com.example.dndproject.db.entities.items.ArmorItemsMM;
+import com.example.dndproject.db.entities.items.Consumables;
+import com.example.dndproject.db.entities.items.ConsumablesItemsMM;
+import com.example.dndproject.db.entities.items.Container;
+import com.example.dndproject.db.entities.items.ContainerItemsMM;
+import com.example.dndproject.db.entities.items.Food;
+import com.example.dndproject.db.entities.items.FoodItemsMM;
+import com.example.dndproject.db.entities.items.Gear;
+import com.example.dndproject.db.entities.items.GearItemsMM;
+import com.example.dndproject.db.entities.items.Items;
+import com.example.dndproject.db.entities.items.Kit;
+import com.example.dndproject.db.entities.items.KitItemsMM;
+import com.example.dndproject.db.entities.items.Tool;
+import com.example.dndproject.db.entities.items.ToolItemsMM;
+import com.example.dndproject.db.entities.items.Transport;
+import com.example.dndproject.db.entities.items.TransportItemsMM;
+import com.example.dndproject.db.entities.items.Transport_Additions;
+import com.example.dndproject.db.entities.items.Weapon;
+import com.example.dndproject.db.entities.items.WeaponItemsMM;
 import com.example.dndproject.db.entities.riches.Artworks;
 import com.example.dndproject.db.entities.riches.ArtworksRichesMM;
 import com.example.dndproject.db.entities.riches.Coins;
@@ -29,11 +55,14 @@ import com.example.dndproject.db.entities.riches.Riches;
 import com.example.dndproject.db.entities.riches.Trinkets;
 import com.example.dndproject.db.entities.riches.TrinketsRichesMM;
 
-@Database(entities = {Artworks.class,
-        Coins.class, Precious_stones.class,
-        Riches.class, Spell.class,
-        Trinkets.class, CoinsRichesMM.class, TrinketsRichesMM.class,
-        ArtworksRichesMM.class, Precious_stonesRichesMM.class}, version = 1)
+@Database(entities = {Artworks.class, Additions.class, Ammunition.class, AmmunitionItemsMM.class,
+        Coins.class, Precious_stones.class, Armor.class, Armor1.class, ArmorItemsMM.class,
+        Riches.class, Spell.class, Consumables.class, ConsumablesItemsMM.class, Container.class,
+        Trinkets.class, CoinsRichesMM.class, TrinketsRichesMM.class, ContainerItemsMM.class,
+        ArtworksRichesMM.class, Precious_stonesRichesMM.class, Food.class, FoodItemsMM.class,
+        Gear.class, GearItemsMM.class, Items.class, Kit.class, KitItemsMM.class, Tool.class,
+        ToolItemsMM.class, Transport.class, Transport_Additions.class, TransportItemsMM.class,
+        Weapon.class, WeaponItemsMM.class, Entity.class}, version = 1)
 public abstract class CursachDatabase extends RoomDatabase {
 
     public abstract ArtworksDao artworksDao();
@@ -56,6 +85,12 @@ public abstract class CursachDatabase extends RoomDatabase {
 
     public abstract TrinketsRichesMMDao trinketsRichesMMDao();
 
+    public abstract ItemsDao itemsDao();
+
+    public abstract WeaponItemsMMDao weaponItemsMMDao();
+
+    public abstract EntityDao entityDao();
+
     private static volatile CursachDatabase INSTANCE;
 
     public static CursachDatabase getInstance(Context context) {
@@ -74,7 +109,7 @@ public abstract class CursachDatabase extends RoomDatabase {
 
                     INSTANCE = Room
                             .databaseBuilder(context.getApplicationContext(),
-                                    CursachDatabase.class, "cursach_db_3")
+                                    CursachDatabase.class, "cursach_db_7")
                             .addCallback(rdc)
                             .build();
                 }
@@ -999,6 +1034,32 @@ public abstract class CursachDatabase extends RoomDatabase {
                     "        (' Заговор', ' В, С', ' «»', 'Ядовитые брызги (Poison spray)', 'Вы простираете руку к существу, видимому в пределах дистанции, и выпускаете из ладони клубы токсичного газа. Это существо должно преуспеть в спасброске Телосложения, иначе оно получит урон ядом 1d12.Урон этого заклинания увеличивается на 1d12, когда вы достигаете 5 уровня (2d12), 11 уровня (3d12) и 17 уровня (4d12).', ' Вызов', null, null, null, null),  " +
                     "        (' 3', ' В, М, маленькая глиняная модель зиккурата', ' «»', 'Языки (Tongues)', 'Это заклинание дарует существу, которого вы касаетесь, способность понимать все языки, которые оно слышит. Более того, когда цель говорит, все существа, знающие хотя бы один язык, и слышащие цель, понимают, что она сказала.', ' Прорицание', null, null, null, null),  " +
                     "        (' 8', ' В, С, М, кусок квасцов, пропитанный уксусом для эффекта антипатии или капля мёда для эффекта симпатии', ' «»', 'Антипатия/симпатия  (Antipathy/sympathy)', 'Это заклинание привлекает или отталкивает выбранных вами существ. Вы выбираете цель в пределах дистанции: либо предмет размером не больше Огромного, либо существо, либо область не больше куба с длиной ребра 200 фт. Затем укажите вид разумных существ, такой как красные драконы, гоблины или вампиры. Вы наделяете цель аурой, которая в течение длительности либо привлекает, либо отталкивает указанных существ. Выберите либо эффект антипатии, либо эффект симпатии:. Эти чары вызывают у выбранных вами существ непреодолимое желание покинуть область и избегать цель. Если такое существо видит цель и оказывается в пределах 60 фт. от неё, оно должно преуспеть в спасброске Мудрости, иначе станет испуганным. Существо остаётся испуганным, пока видит цель или находится в пределах 60 фт. от неё. Будучи испуганным целью, существо должно тратить своё перемещение на побег в ближайшее безопасное место, откуда оно уже не увидит цель. Если существо отдалится от цели более чем на 60 фт. и не сможет её видеть, оно перестаёт быть испуганным, но становится испуганным вновь, если увидит цель или окажется в пределах 60 фт. от неё.. Эти чары вызывают у выбранных вами существ непреодолимое желание приблизиться к цели, если они находятся в пределах 60 фт. от неё или видят её. Если такое существо видит цель или оказывается в пределах 60 фт. от неё, оно должно преуспеть в спасброске Мудрости, иначе оно в каждом своём ходу тратит перемещение на то, чтобы войти в область или прикоснуться к цели. Сделав это, оно уже не может добровольно отойти от цели. Если цель причиняет урон или как-то иначе вредит указанному существу, существо может совершить спасбросок Мудрости для окончания эффекта, как описано ниже.. Если указанное существо окончит ход за пределами 60 фт. от цели или не сможет её видеть, оно совершает спасбросок Мудрости. В случае успеха эффект на существе заканчивается, и оно понимает, что тяга или отвращение были вызваны магией. Кроме того, попавшему под эффект заклинания существу позволяется спасбросок Мудрости каждые 24 часа, пока заклинание активно. Совершившее успешный спасбросок существо получает иммунитет к эффекту на 1 минуту, после чего снова попадает под его действие.', ' Очарование', null, null, null, null);");
+
+            //Items
+            db.execSQL("INSERT INTO Weapon (weapon_name, weapon_type, weapon_price, weapon_weight, weapon_properties, weapon_damage, weapon_description) " +
+                    "VALUES ('Лук клятвы', 'Длинный лук', '50 зм.', '2 фнт.', 'Боеприпас (дис. 150/600), двуручное, тяжелое', '1d8 колющий', 'Когда вы натягиваете тетиву этого лука, он шепчет на Эльфийском языке: «Несу смерть врагам». Если вы используете это оружие для совершения дальнобойной атаки, вы можете сказать командную фразу: «Смерть презревшему меня». Цель вашей атаки становится вашим заклятым врагом, пока не умрёт, или пока не наступит рассвет по прошествии семи дней. У вас может быть только один заклятый враг одновременно. Если ваш заклятый враг умирает, вы можете выбрать нового после следующего рассвета. " +
+                    "Если вы совершаете бросок дальнобойной атаки по заклятому врагу, вы совершаете его с преимуществом. Кроме того, цель не получает преимуществ от укрытия, кроме полного укрытия, и вы не получаете штраф за совершение атаки на расстояние, превышающее обычную дистанцию. Если атака попадает, заклятый враг получает дополнительный колющий урон 3d6. " +
+                    "Пока ваш заклятый враг жив, вы совершаете с помехой броски атаки всем другим оружием.');");
+            db.execSQL("INSERT INTO WeaponItemsMM (weapon_id, items_id) VALUES " +
+                    "(1, 1);");
+            db.execSQL("INSERT INTO Items (name) VALUES " +
+                    "('Тестовая запись, лук клятвы');");
+
+            //Bestiary
+            db.execSQL("INSERT INTO Entity (name, hp, description, speed_id, stats_id, armor_id, skills_id, fillings_id, actions_id, languages_id, abilities_id, resistances_id, hits, danger, exp, items_id, riches_id) VALUES " +
+                    "('Людоящер шаман [Lizardfolk shaman]', '100', '«ВО ВРЕМЯ ВСЕХ МОИХ ВСТРЕЧ С ЛЮДОЯЩЕРАМИ Я НИКОГДА НЕ МОГ СКАЗАТЬ, О ЧЕМ ОНИ ДУМАЮТ. ГЛАЗА ЭТИХ РЕПТИЛИЙ НИКАК НЕ ВЫКАЗЫВАЮТ НАМЕРЕНИЙ. В ОБМЕН НА СВОИ ПРИПАСЫ Я ПОЛУЧИЛ ЛИШЬ НЕРВНУЮ ДРОЖЬ ПО ТЕЛУ». " +
+                    "— ЗАПИСИ ТОРГОВЦА ПОСЛЕ ВСТРЕЧИ С ПЛЕМЕНЕМ ЛЮДОЯЩЕРОВ НА БОЛОТЕ ЯЩЕРОВ " +
+                    "Людоящеры — примитивные рептилоидные гуманоиды, обитающие в болотах и джунглях. Их деревушки из хижин процветают в неприступных гротах, полузатонувших руинах и в залитых водою пещерах. " +
+                    "Территориальные ксенофобы. Людоящеры очень редко заключают сделки и торгуют с другими расами. Они очень сильно привязаны к своей территории, выставляя замаскированных разведчиков на границах для охраны. Когда у границ появляется противник, людоящеры отправляют отряды охотников, чтобы преследовать или изгнать захватчиков со своей территории. Также они могут воспользоваться знанием своей земли и заманить непрошеных гостей в логово крокодилов или других опасных существ. " +
+                    "У людоящеров нет и малейшего представления о морали, а привычная концепция добра и зла вовсе чужда им. Истинно нейтральные существа, они убивают только тогда, когда это целесообразно или критично для выживания. " +
+                    "Людоящеры очень редко выходят за пределы своих охотничьих угодий. Любое существо, которое зайдет на их территорию, будет преследоваться, а затем будет убито и съедено. Для них нет разницы в том, кто пришел в их владения — человек, зверь или монстр. Людоящеры не любят покидать свои угодья потому, что за их пределами они могут превратиться из охотников в добычу. " +
+                    "Иногда людощеры заключают союз с соседями. Это может случиться только тогда, когда эльфы, люди, полурослики или другие могут принести им пользу или заслужили доверие. После того, как людоящеры налаживают связи, они выступают в роли жестоких, но надежных союзников. " +
+                    "Великие пиры и жертвоприношения. Людоящеры всеядны, но они предпочитают мясо гуманоидов. Пленники очень часто попадают в лагеря в качестве главного блюда на праздниках и обрядах, которые сопровождаются танцами, байками и ритуальными битвами. Жертвы либо готовятся на огне и съедаются, либо приносятся в качестве дара для Семуаньи, божества людоящеров. " +
+                    "Барахольщики. Несмотря на то, что людоящеры не слишком умелые ремесленники, они используют кости поверженных врагов для изготовления инструментов. Шкуры и панцири убитых чудовищ часто используются для изготовления щитов. " +
+                    "Лидеры людоящеров. Людоящеры уважают и боятся магию с религиозным благоговением. Племена людоящеров возглавляют шаманы, исполняющие обряды и церемонии во имя Семуаньи. Однако в племени людоящеров может появиться личность, благословенная не Семуаньей, а Сесс’инеком, рептилоидным демоническим повелителем, который пытается развратить людоящеров и полностью контролировать их. " +
+                    "Людоящеры, рожденные под влиянием Сесс’инека, крупнее и хитрее сородичей, а также намного злее. Такие короли и королевы ящеров захватывают под жесткий контроль племена людоящеров, узурпируя авторитет шаманов и вдохновляя своих подданных на нехарактерную агрессию. " +
+                    "Последователи драконов. Людоящеры говорят на Драконьем языке, которому они научились (или, по крайней мере, они так думают) в давние времена у самих драконов. Если племя заходит на территорию дракона, то предлагает ему подношение, чтобы получить его благосклонность. Злой дракон может использовать людоящеров в своих целях, сделав из них налетчиков и грабителей.', +" +
+                    "1, 1, 1, 1, 1, 1, 1, 1, 1, '27 (5d8 + 5)', '2', '450 опыта', 1, 1);");
         });
         thread.start();
     }

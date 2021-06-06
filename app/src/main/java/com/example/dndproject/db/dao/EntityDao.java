@@ -7,11 +7,13 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 
+import com.example.dndproject.db.entities.Entity;
+
 import java.util.List;
 
 @Dao
 public interface EntityDao {
-    /*@Query("SELECT * FROM Entity")
+    @Query("SELECT * FROM Entity")
     List<Entity> getAll();
 
     @Insert
@@ -21,5 +23,5 @@ public interface EntityDao {
     void delete(Entity user);
 
     @Update
-    void update(Entity user);*/
+    void update(Entity user);
 }

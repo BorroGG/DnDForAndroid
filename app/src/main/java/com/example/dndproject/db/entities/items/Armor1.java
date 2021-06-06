@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Armor1 {
+    @PrimaryKey (autoGenerate = true)
+    @NonNull
     public Integer armor_id;
     public String armor_name;
     public String armor_type;
